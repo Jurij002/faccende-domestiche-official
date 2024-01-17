@@ -1,3 +1,4 @@
 [build]
   command = "ng build"
   publish = "dist/faccende-domestiche-official/browser/browser"
+  functions = "netlify/functions"

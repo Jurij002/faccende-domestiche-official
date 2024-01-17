@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,29 +9,14 @@ import { Component } from '@angular/core';
   styleUrl: './calendario-pulizie.component.scss'
 })
 export class CalendarioPulizieComponent {
+  constructor(private http: HttpClient) {}
 
-  async eseguiFunzione() {
-    try {
-      const taskId = 123; // Sostituisci con il valore appropriato
-      const status = 'fatto'; // Sostituisci con il valore appropriato
-
-      const response = await fetch('/.netlify/functions/updateStatus', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ taskId, status }),
+  updateStatus(): void {
+    const taskId = "123"; // Sostituisci con l'id del tuo task
+    this.http.post('/.netlify/functions/updateStatus', { taskId })
+      .subscribe(response => {
+        console.log(response);
+        // Gestisci la risposta, ad esempio, aggiorna l'interfaccia utente
       });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        console.log('Funzione eseguita con successo:', result);
-      } else {
-        console.error('Errore durante l\'esecuzione della funzione:', result);
-      }
-    } catch (error) {
-      console.error('Errore durante l\'esecuzione della funzione:', error);
-    }
   }
 }

@@ -35,3 +35,11 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
   background-color: #e0e0e0;
 }
+
+
+/* styles.css (o stili all'interno del tuo componente Angular) */
+
+.fatto {
+  color: green;
+  font-weight: bold;
+}
