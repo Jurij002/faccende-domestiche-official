@@ -11,12 +11,4 @@ import { Component } from '@angular/core';
 export class CalendarioPulizieComponent {
   constructor(private http: HttpClient) {}
 
-  updateStatus(): void {
-    const taskId = "123"; // Sostituisci con l'id del tuo task
-    this.http.post('/.netlify/functions/updateStatus', { taskId })
-      .subscribe(response => {
-        console.log(response);
-        // Gestisci la risposta, ad esempio, aggiorna l'interfaccia utente
-      });
-  }
 }
